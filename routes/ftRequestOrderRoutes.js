@@ -4,10 +4,10 @@ const router = express.Router();
 // insert 
 router.post('/', (req, res)=>{
     const db = require('../server')
-    const {ftTel, type, brand, oldModel, oldSN, newSN} = req.body
-    const sql = "INSERT INTO `ft_request_order`( `ft_telno`, `type`,`brand`, `old_model`, `old_sn`, `new_sn`) VALUES (?,?,?,?,?,?)";
+    const {ftTel, type, brand, oldModel, oldSN, newSN,status} = req.body
+    const sql = "INSERT INTO `ft_request_order`( `ft_telno`, `type`,`brand`, `old_model`, `old_sn`, `new_sn`,`status`) VALUES (?,?,?,?,?,?,0)";
 
-    db.query(sql, [ftTel, type, brand, oldModel, oldSN, newSN], (err, data)=> {
+    db.query(sql, [ftTel, type, brand, oldModel, oldSN, newSN, status], (err, data)=> {
         if(err){
             res.send(err)
         }
