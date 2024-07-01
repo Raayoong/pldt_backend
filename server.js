@@ -2,12 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+const cors = require('cors')
 const inventoryRouter = require('./routes/inventoryRoutes')
 const faultTicketRouter = require('./routes/ftRoutes')
 const requestOrderRouter = require('./routes/ftRequestOrderRoutes')
 // middleware
 app.use(express.json())
-
+app.use(cors())
 
 app.use((req,res,next)=>{
     console.log(req.path,req.method,res)
